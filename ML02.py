@@ -45,4 +45,5 @@ from sklearn.linear_model import LinearRegression
 # Evaluate the Model
 
 from sklearn.metrics import mean_absolute_error
+print(mean_absolute_error(y_test, y_pred))
 
