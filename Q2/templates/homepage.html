@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini RestAPI</title>
+</head>
+<body>
+    <h1>Welcome to the File Upload API</h1>
+    <p>Use the following endpoints to interact with the API:</p>
+    <ul>
+        <li><strong>POST /file</strong>: push data to a file, this must be done in chunks as in we don’t have to push the file at once. This means you can push a file in multiple parallels call. We must be
+able to push more than one file if we want to.</li>
+        <li><strong>GET /file?filename=&lt;filename&gt;</strong>: retrieve a file that has been uploaded. It has to be in the same order as the original
+file that has been pushed to the API. We must be able to retrieve more than one file via
+this endpoint, but only one file can be requested at a time</li>
+    </ul>
+</body>
+</html>
