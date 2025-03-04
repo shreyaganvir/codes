@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  minirest_app:
+    container_name: minirest_app
+    image: shreyali099/minirest_app:1
+    build: .
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      #URI=postgresql://postgres:postgres@minirest_db:5432/postgres
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@minirest_db:5432/postgres
+      - URI=postgresql://postgres:postgres@minirest_db:5432/postgres
+      - FLASK_APP=api.py
+      - FLASK_ENV=dev
+      #- DB_URL=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@minirest_db:5432/${POSTGRES_DATABASE}
+    depends_on:
+      - minirest_db
+
+
+  minirest_db:
+    image: postgres:14
+    container_name: minirest_db
+    environment:
+      - POSTGRES_DATABASE:${POSTGRES_DATABASE}
+      - POSTGRES_USER:{POSTGRES_USER}
+      - POSTGRES_PASSWORD:{POSTGRES_PASSWORD}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - data:/var/lib/postgresql/data
+
+volumes:
+  data: {}
+
+
